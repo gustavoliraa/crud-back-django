@@ -3,6 +3,7 @@ from django.urls import path, include
 from .views import home, salvar, editar, alterar, excluir
 
 urlpatterns = [
+    path('', views.login, name='login'),  # 
     path('', home),
     path('salvar', salvar, name="salvar"),
     path('editar/<int:id>', editar, name="editar"),
