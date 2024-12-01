@@ -1,6 +1,19 @@
 from django.shortcuts import render, redirect
 from .models import Aluno
 
+def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        if username == 'a' and password == '1':
+            return redirect('editar')  # Redireciona para a página 'opcoes'
+        else:
+            return render(request, 'usuarios/login.html', {'error': 'Usuário ou senha inválidos.'})
+    
+    return render(request, 'login.html')
+
+
 def home(request):
     alunos = Aluno.objects.all()
     return render(request, "index.html", {"alunos": alunos})
